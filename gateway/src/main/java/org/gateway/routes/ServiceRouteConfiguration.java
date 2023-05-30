@@ -13,6 +13,7 @@ import java.util.Collections;
 
 @Configuration
 public class ServiceRouteConfiguration {
+
     @Bean
     public RouteLocator routes(RouteLocatorBuilder builder, LoggingGatewayFilterFactory loggingFactory) {
         return builder.routes()

@@ -1,5 +1,5 @@
 server:
-  port: 8000
+  port: 8138
   servlet:
     context-path: /api
 spring:
@@ -15,7 +15,7 @@ spring:
           keycloak-spring-gateway-client:
             provider: my-keycloak-provider
             client-id: admin_console_client
-            client-secret: fc36fd82-7042-4287-aef0-e9f8603abd02
+            client-secret: auD2uP47zVYsegYH5eHoa1IPwuEytoBx
             authorization-grant-type: authorization_code
             redirect-uri: https://api3.hireya.org/login/oauth2/code/keycloak
 eureka:
@@ -29,3 +29,8 @@ eureka:
   instance:
     preferIpAddress: true
     leaseRenewalIntervalInSeconds: 10
+
+#logging:
+#  level:
+#    root: DEBUG
+#    org.springframework.web: DEBUG

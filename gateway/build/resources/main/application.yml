@@ -1,26 +1,23 @@
 server:
-  port: 8000
+  port: 8138
   servlet:
     context-path: /api
-logging:
-  file:
-    name: ${java.io.tmpdir}/application.log
-  level:
-    com:
-      backend: DEBUG
-    org:
-      springframework: DEBUG
-      springframework.web: DEBUG
 spring:
   application:
     name: gateway-service
-  profiles:
-    active: dev
-  jmx:
-    enabled: false
-info:
-  build:
-    version: 1.0
+  security:
+    oauth2:
+      client:
+        provider:
+          my-keycloak-provider:
+            issuer-uri: https://api3.hireya.org/realms/admin_console_realm
+        registration:
+          keycloak-spring-gateway-client:
+            provider: my-keycloak-provider
+            client-id: admin_console_client
+            client-secret: auD2uP47zVYsegYH5eHoa1IPwuEytoBx
+            authorization-grant-type: authorization_code
+            redirect-uri: https://api3.hireya.org/login/oauth2/code/keycloak
 eureka:
   client:
     registerWithEureka: true
@@ -32,3 +29,8 @@ eureka:
   instance:
     preferIpAddress: true
     leaseRenewalIntervalInSeconds: 10
+
+#logging:
+#  level:
+#    root: DEBUG
+#    org.springframework.web: DEBUG
