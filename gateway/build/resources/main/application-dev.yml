@@ -1,0 +1,32 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+logging:
+  file:
+    name: ${java.io.tmpdir}/application.log
+  level:
+    com:
+      backend: DEBUG
+    org:
+      springframework: DEBUG
+      springframework.web: DEBUG
+spring:
+  application:
+    name: gateway-service
+  jmx:
+    enabled: false
+info:
+  build:
+    version: 1.0
+eureka:
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+    fetchRegistry: true
+    healthcheck:
+      enabled: true
+  instance:
+    preferIpAddress: true
+    leaseRenewalIntervalInSeconds: 10

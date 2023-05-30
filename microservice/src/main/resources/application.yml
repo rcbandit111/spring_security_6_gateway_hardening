@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: microservice
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://api3.hireya.org/realms/admin_console_realm
+          jwk-set-uri: https://api3.hireya.org/realms/admin_console_realm/protocol/openid-connect/certs
+server:
+  port: 8909

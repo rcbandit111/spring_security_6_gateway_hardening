@@ -1,0 +1,31 @@
+server:
+  port: 8000
+  servlet:
+    context-path: /api
+spring:
+  application:
+    name: gateway-service
+  security:
+    oauth2:
+      client:
+        provider:
+          my-keycloak-provider:
+            issuer-uri: https://api3.hireya.org/realms/admin_console_realm
+        registration:
+          keycloak-spring-gateway-client:
+            provider: my-keycloak-provider
+            client-id: admin_console_client
+            client-secret: fc36fd82-7042-4287-aef0-e9f8603abd02
+            authorization-grant-type: authorization_code
+            redirect-uri: https://api3.hireya.org/login/oauth2/code/keycloak
+eureka:
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+    fetchRegistry: true
+    healthcheck:
+      enabled: true
+  instance:
+    preferIpAddress: true
+    leaseRenewalIntervalInSeconds: 10
