@@ -25,14 +25,14 @@ public class WebSecurityConfig {
         // Note: Please change '/mp-api/**' to your desired rest controller path.
         httpSecurity
                 .authorizeHttpRequests(registry -> registry
-                        .requestMatchers("/**").hasRole("ROLE_TECH_SUPPORT")
+                        .requestMatchers("/**").hasRole("TECH_SUPPORT")
                         .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer(oauth2Configurer -> oauth2Configurer.jwt(jwtConfigurer -> jwtConfigurer.jwtAuthenticationConverter(jwt -> {
                     Map<String, Collection<String>> realmAccess = jwt.getClaim("realm_access");
                     Collection<String> roles = realmAccess.get("roles");
                     var grantedAuthorities = roles.stream()
-                            .map(role -> new SimpleGrantedAuthority("ROLE_" + role))
+                            .map(role -> new SimpleGrantedAuthority(role))
                             .collect(Collectors.toList());
                     return new JwtAuthenticationToken(jwt, grantedAuthorities);
                 })));
