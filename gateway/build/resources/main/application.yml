@@ -14,10 +14,11 @@ spring:
         registration:
           keycloak-spring-gateway-client:
             provider: my-keycloak-provider
+            scope: openid
             client-id: admin_console_client
             client-secret: auD2uP47zVYsegYH5eHoa1IPwuEytoBx
             authorization-grant-type: authorization_code
-            redirect-uri: https://api3.hireya.org/login/oauth2/code/keycloak
+            redirect-uri: https://api2.hireya.org/login/oauth2/code/keycloak
 eureka:
   client:
     registerWithEureka: true
@@ -30,7 +31,7 @@ eureka:
     preferIpAddress: true
     leaseRenewalIntervalInSeconds: 10
 
-#logging:
-#  level:
-#    root: DEBUG
-#    org.springframework.web: DEBUG
+logging:
+  level:
+    root: DEBUG
+    org.springframework.web: DEBUG
