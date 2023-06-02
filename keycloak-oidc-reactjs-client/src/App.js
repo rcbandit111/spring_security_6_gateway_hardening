@@ -1,41 +1,72 @@
-import React from 'react';
-import {BrowserRouter as Router, Navigate, Route} from 'react-router-dom';
-import { getCurrentUser } from './model/Functions';
-import Home from './component/Home';
-import AuthorisedPage from './component/AuthorisedPage';
+import React from "react";
+import {
+    Route,
+    Routes,
+    Outlet,
+    Navigate,
+    useLocation,
+    BrowserRouter as Router,
+} from "react-router-dom";
+import { getCurrentUser } from "./model/Functions";
+import Home from "./component/Home";
+import AuthorisedPage from "./component/AuthorisedPage";
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={props => (
-    getCurrentUser() ? (
-      <Component {...props} />
+
+
+const PrivateRoute = () => {
+    const location = useLocation();
+
+
+
+    return getCurrentUser() ? (
+        <Outlet />
     ) : (
-        <Navigate to={{
-          pathname: '/',
-          state: { from: props.location }
-        }} />
-      )
-  )} />
-)
-const NonPrivateRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={props => (
-    getCurrentUser() ? (
-      <Navigate to={{
-        pathname: "/auth",
-        state: { from: props.location }
-      }} />
+        <Navigate
+            to={{
+                pathname: "/",
+                state: { from: location },
+            }}
+        />
+    );
+};
+
+
+
+const NonPrivateRoute = () => {
+    const location = useLocation();
+
+
+
+    return getCurrentUser() ? (
+        <Navigate
+            to={{
+                pathname: "/auth",
+                state: { from: location },
+            }}
+        />
     ) : (
-        <Component {...props} />
-      )
-  )} />
-)
+        <Outlet />
+    );
+};
+
+
 
 function App() {
-  return (
-    <Router>
-      <NonPrivateRoute exact path="/" component={Home} />
-      <PrivateRoute exact path="/auth" component={AuthorisedPage} />
-    </Router>
-  );
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<NonPrivateRoute />}>
+                    <Route index element={<Home />} />
+                </Route>
+                <Route path="/auth" element={<PrivateRoute />}>
+                    <Route index element={<AuthorisedPage />} />
+                </Route>
+            </Routes>
+        </Router>
+    );
 }
 
+
+
 export default App;
+
