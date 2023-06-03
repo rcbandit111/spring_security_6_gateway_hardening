@@ -7,7 +7,7 @@ let keycloak;
 class Home extends Component{
     constructor(props){
         super(props);
-        keycloak = Keycloak(Config);
+        keycloak = new Keycloak(Config);
     }
     componentDidMount(){
         keycloak.init({ flow: 'implicit', checkLoginIframe: false }).success(function (authenticated) {
