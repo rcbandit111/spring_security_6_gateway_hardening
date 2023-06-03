@@ -18,7 +18,8 @@ spring:
             client-id: admin_console_client
             client-secret: auD2uP47zVYsegYH5eHoa1IPwuEytoBx
             authorization-grant-type: authorization_code
-            redirect-uri: https://api2.hireya.org/login/oauth2/code/keycloak
+            redirect-uri: '{baseUrl}/login/oauth2/code/keycloak'
+#            redirect-uri: https://api2.hireya.org/login/oauth2/code/keycloak
 eureka:
   client:
     registerWithEureka: true
