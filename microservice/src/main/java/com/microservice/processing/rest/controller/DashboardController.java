@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -30,9 +29,8 @@ public class DashboardController {
     @Operation(summary = "Gets all summary.")
     @PreAuthorize("hasRole('ROLE_TECH_SUPPORT') or hasRole('ROLE_EDITOR')")
     @GetMapping(value = "/test_sec", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getSecSummary(@RequestParam(value = "startDate", required = false) String startDate,
-                                           @RequestParam(value = "endDate", required = false) String endDate)
+    public ResponseEntity<?> getSecSummary()
     {
-        return ResponseEntity.ok("REST API Result");
+        return ResponseEntity.ok("REST API Sec Result");
     }
 }
