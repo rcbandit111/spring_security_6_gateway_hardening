@@ -16,7 +16,7 @@ spring:
             provider: my-keycloak-provider
             scope: openid
             client-id: admin_console_client
-            client-secret: nHC2UIZLNMHHOP4PV6SEgZWK0wb7Ggk3
+            client-secret: UrCwfzDDeHpltQ37JIkzmrPJoRTJoNEy
             authorization-grant-type: authorization_code
             redirect-uri: '{baseUrl}/login/oauth2/code/keycloak'
 eureka:
