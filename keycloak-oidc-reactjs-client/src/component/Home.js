@@ -10,12 +10,14 @@ class Home extends Component{
         keycloak = new Keycloak(Config);
     }
     componentDidMount(){
+        console.log('keycloak home componentDidMount');
         keycloak.init({ flow: 'implicit', checkLoginIframe: false }).success(function (authenticated) {
+            console.log('keycloak authenticated =', keycloak.authenticated, ',status=', authenticated)
             if (keycloak.authenticated) {
                 parseToken(keycloak.token);
                 sessionStorage.setItem("authKey", keycloak.token);
                 SetCookieValue(CookieName, keycloak.idTokenParsed.name);
-                window.location.href = window.location.origin + "/auth";
+                //window.location.href = window.location.origin + "/auth";
             }
         }).then(() => {
             return false;

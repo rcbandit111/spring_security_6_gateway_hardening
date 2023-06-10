@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping(value = "/dashboard", produces = MediaType.APPLICATION_JSON_VALUE)
 public class DashboardController {
@@ -31,6 +34,9 @@ public class DashboardController {
     @GetMapping(value = "/test_sec", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getSecSummary()
     {
-        return ResponseEntity.ok("REST API Sec Result");
+        Map data = new HashMap<>();
+        data.put("msg", "REST API Sec Result");
+        return
+                ResponseEntity.ok(data);
     }
 }
