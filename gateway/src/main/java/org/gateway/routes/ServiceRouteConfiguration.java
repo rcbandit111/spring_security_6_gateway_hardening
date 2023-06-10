@@ -36,7 +36,7 @@ public class ServiceRouteConfiguration {
                         .filters(f -> f.rewritePath("/api/microservice/dashboard/test_sec", "/dashboard/test_sec")
                                 .removeRequestHeader("Cookie")
                                 .filter(loggingFactory.apply(new LoggingGatewayFilterFactory.Config("My Custom Message test_sec", true, true)))
-                                .filter(filterFactory.apply()))
+                                )
                         .uri("lb://microservice/dashboard/test_sec"))
 
                 .build();

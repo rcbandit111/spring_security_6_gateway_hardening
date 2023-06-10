@@ -28,5 +28,7 @@ export const parseToken = function(token) {
     var authObject = decodeURIComponent(atob(base64).split('').map(function(c) {
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
-    sessionStorage.setItem("keycloakID", JSON.parse(authObject).sub);
+    var authObjectEntity = JSON.parse(authObject)
+    console.log('authObjectEntity=', authObjectEntity)
+    sessionStorage.setItem("keycloakID", authObjectEntity.sub);
 };
