@@ -17,7 +17,7 @@ class Home extends Component{
                 parseToken(keycloak.token);
                 sessionStorage.setItem("authKey", keycloak.token);
                 SetCookieValue(CookieName, keycloak.idTokenParsed.name);
-                //window.location.href = window.location.origin + "/auth";
+                window.location.href = window.location.origin + "/auth";
             }
         }).then(() => {
             return false;
