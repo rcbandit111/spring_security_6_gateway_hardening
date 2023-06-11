@@ -30,13 +30,13 @@ public class WebClientConfig {
                 .authenticated()
                 .and()
                 .oauth2Login(); // to redirect to oauth2 login page.
-        http.cors().configurationSource(request-> {
-            CorsConfiguration configuration = new CorsConfiguration();
-            configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
-            configuration.setAllowedMethods(Arrays.asList("GET","POST", "OPTIONS"));
-            configuration.setAllowedHeaders(List.of("*"));
-            return configuration;
-        });
+//        http.cors().configurationSource(request-> {
+//            CorsConfiguration configuration = new CorsConfiguration();
+//            configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
+//            configuration.setAllowedMethods(Arrays.asList("GET","POST", "OPTIONS"));
+//            configuration.setAllowedHeaders(List.of("*"));
+//            return configuration;
+//        });
         return http.build();
     }
 }

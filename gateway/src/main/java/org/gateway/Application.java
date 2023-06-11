@@ -18,16 +18,16 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration apiCorsConfiguration = new CorsConfiguration();
-        apiCorsConfiguration.setAllowCredentials(true);
-        apiCorsConfiguration.setAllowedOriginPatterns(Collections.singletonList("*"));
-        apiCorsConfiguration.setAllowedHeaders(Collections.singletonList("*"));
-        apiCorsConfiguration.setAllowedMethods(Collections.singletonList("*"));
-
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", apiCorsConfiguration);
-        return source;
-    }
+//    @Bean
+//    public CorsConfigurationSource corsConfigurationSource() {
+//        CorsConfiguration apiCorsConfiguration = new CorsConfiguration();
+//        apiCorsConfiguration.setAllowCredentials(true);
+//        apiCorsConfiguration.setAllowedOriginPatterns(Collections.singletonList("*"));
+//        apiCorsConfiguration.setAllowedHeaders(Collections.singletonList("*"));
+//        apiCorsConfiguration.setAllowedMethods(Collections.singletonList("*"));
+//
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", apiCorsConfiguration);
+//        return source;
+//    }
 }
