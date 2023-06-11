@@ -24,8 +24,6 @@ class Home extends Component{
         })
         .catch((error) => {
             console.log("Something went wrong due to \n" + error);
-            sessionStorage.setItem("authKey", '');
-            window.location.href = window.location.origin + "/";
         })
     }
     authenticateLogin = () => {

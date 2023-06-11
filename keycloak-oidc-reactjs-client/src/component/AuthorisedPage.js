@@ -16,17 +16,21 @@ class AuthorisedPage extends Component {
     console.log('token =', token)
 
     axios
-      .get("https://api2.hireya.org/api/microservice/dashboard/test_sec", {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-        this.setState({
-          data: res.data.msg,
+        .get("https://api2.hireya.org/api/microservice/dashboard/test_sec", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
         })
-      });
+        .then((res) => {
+          console.log(res.data);
+          this.setState({
+            data: res.data.msg,
+          })
+        }).catch((error) => {
+          console.log("Something went wrong due to \n " + error);
+          sessionStorage.setItem("authKey", '');
+          window.location.href = window.location.origin + "/";
+    });
 
   }
   render() {
