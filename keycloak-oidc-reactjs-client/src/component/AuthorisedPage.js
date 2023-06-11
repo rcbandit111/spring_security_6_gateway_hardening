@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component } from "react";
 import { CookieName } from "../model/Config";
 import { GetCookieValue } from "../model/Functions";
 import axios from "axios";
@@ -16,7 +16,7 @@ class AuthorisedPage extends Component {
     console.log('token =', token)
 
     axios
-      .get("http://localhost:8138/api/microservice/dashboard/test_sec", {
+      .get("/api/microservice/dashboard/test_sec", {
         headers: {
           Authorization: "Bearer " + token,
         },

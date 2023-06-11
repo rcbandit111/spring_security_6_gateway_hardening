@@ -7,14 +7,14 @@ import {
   useLocation,
   BrowserRouter as Router,
 } from "react-router-dom";
-import { getCurrentUser } from "./model/Functions";
+import { userIsLogin } from "./model/Functions";
 import Home from "./component/Home";
 import AuthorisedPage from "./component/AuthorisedPage";
 
 const PrivateRoute = () => {
   const location = useLocation();
 
-  return getCurrentUser() ? (
+  return userIsLogin() ? (
     <Outlet />
   ) : (
     <Navigate
@@ -29,7 +29,7 @@ const PrivateRoute = () => {
 const NonPrivateRoute = () => {
   const location = useLocation();
 
-  return getCurrentUser() ? (
+  return userIsLogin() ? (
     <Navigate
       to={{
         pathname: "/auth",

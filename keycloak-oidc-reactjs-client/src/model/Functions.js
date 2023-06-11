@@ -1,5 +1,5 @@
-export const getCurrentUser = () => {
-  if (GetCookieValue("Keycloak_Auth")) {
+export const userIsLogin = () => {
+  if (sessionStorage.getItem("authKey")) {
     return true;
   }
   return false;
