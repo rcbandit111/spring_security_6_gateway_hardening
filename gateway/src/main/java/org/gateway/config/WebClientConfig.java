@@ -33,7 +33,7 @@ public class WebClientConfig {
         http.cors().configurationSource(request-> {
             CorsConfiguration configuration = new CorsConfiguration();
             configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
-            configuration.setAllowedMethods(Arrays.asList("GET","POST"));
+            configuration.setAllowedMethods(Arrays.asList("GET","POST", "OPTIONS"));
             configuration.setAllowedHeaders(List.of("*"));
             return configuration;
         });
