@@ -16,7 +16,7 @@ class AuthorisedPage extends Component {
     console.log('token =', token)
 
     axios
-      .get("https://api2.hireya.org/api/microservice/dashboard/test_sec", {
+      .get("https://api2.hireya.org/api/microservice/dashboard/test_sec333", {
         headers: {
           Authorization: "Bearer " + token,
         },
