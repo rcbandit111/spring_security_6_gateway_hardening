@@ -33,6 +33,10 @@ class AuthorisedPage extends Component {
     });
 
   }
+  handleLogout = () => {
+    sessionStorage.setItem("authKey", '');
+    window.location.href = window.location.origin + "/";
+  }
   render() {
     let { username } = this.state;
     return (
@@ -47,6 +51,9 @@ class AuthorisedPage extends Component {
           </p>
           <p>
             The information from dashboard is <strong>{this.state.data}</strong>
+          </p>
+          <p>
+          <button className="btn-normal" onClick={this.handleLogout}>Logout</button>
           </p>
           </div>
         ) : (
