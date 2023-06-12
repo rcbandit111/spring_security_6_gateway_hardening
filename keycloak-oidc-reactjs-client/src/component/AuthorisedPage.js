@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { CookieName } from "../model/Config";
+import { Config, CookieName } from "../model/Config";
 import { GetCookieValue } from "../model/Functions";
 import axios from "axios";
+import Keycloak from 'keycloak-js';
 
 class AuthorisedPage extends Component {
   constructor() {
@@ -14,7 +15,6 @@ class AuthorisedPage extends Component {
   componentDidMount() {
     const token = sessionStorage.getItem("authKey");
     console.log('token =', token)
-
     axios
         .get("https://api2.hireya.org/api/microservice/dashboard/test_sec", {
           headers: {
@@ -34,8 +34,20 @@ class AuthorisedPage extends Component {
 
   }
   handleLogout = () => {
-    sessionStorage.setItem("authKey", '');
-    window.location.href = window.location.origin + "/";
+    var keycloak = new Keycloak(Config);
+    console.log('keycloak AuthorisedPage componentDidMount');
+    keycloak.init({ flow: 'implicit', checkLoginIframe: false }).success(function (authenticated) {
+      var url = keycloak.createLogoutUrl({redirectUri : window.location.origin + "/"})
+      var logoutOptions = { redirectUri : window.location.origin + "/" };
+      keycloak.logout(logoutOptions);
+      sessionStorage.setItem("authKey", '');
+      window.location.href = url;
+    }).then(() => {
+        return false;
+    })
+    .catch((error) => {
+        console.log("Something went wrong due to \n" + error);
+    })
   }
   render() {
     let { username } = this.state;
